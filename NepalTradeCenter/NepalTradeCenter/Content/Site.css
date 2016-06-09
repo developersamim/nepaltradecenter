@@ -1,0 +1,125 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: url('images/pattern8.png');
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.topnav{ background: #05253a; padding: 0}
+.topnav ul { }
+    .topnav ul li a {
+        text-transform:uppercase;
+        color: #fff;
+        letter-spacing: 1px;
+        padding-right: 30px;
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .topnav ul li:first-child a {
+    }
+    .topnav ul li a:hover, a:active {
+        background: #c6c6c6;
+        color: #000;
+    }
+    .topnav ul li a.active {
+        background: #c6c6c6;
+        color: #000;
+    }
+
+.topheader {
+    background: #fff;
+}
+.topheader img{
+    padding: 10px;
+}
+
+div.mystripe{
+    background: url(images/pattern5.png);
+    max-width: 100%;
+    height: 40px;
+    margin-top: -20px;
+    background-repeat: repeat-x;
+    width: 100%;
+}
+div.topheaderwrapper{
+    position: relative;
+}
+
+section#mainContent div.container{
+    background: #ccc;
+}
+section#bestSeller div.container{
+    background: #ccc;
+}
+section#mainContent h2{
+    margin: 40px auto;
+    max-width: 1170px;
+    padding-left: 15px;
+}
+section#mainContent div.myProduct {
+    width: 80%;
+    background: #fff;
+    text-align:center;
+}
+section#mainContent div.myProduct a{
+}
+section#mainContent div.myProduct a img{
+    padding: 8% 0;
+}
+section#mainContent div.myProduct a span{
+}
+section#bestSeller h2{
+    margin: 40px auto;
+    max-width: 1170px;
+    padding-left: 30px;
+}
+section#bestSeller div.myProduct {
+    width: 80%;
+    background: #fff;
+    text-align:center;
+}
+section#bestSeller div.myProduct a{
+}
+section#bestSeller div.myProduct a img{
+}
+section#bestSeller div.myProduct a span{
+}
+
+div.productBottom {
+}
+
+div.productBottom a.addToCart {
+        background: #05253a;
+    font-size: 18px;
+    color: #fff;
+    padding: 10px;
+    width: 65%;
+    float: right;
+    text-align: center;
+}
+div.productBottom span.productPrice{
+        background: #35de28;
+    padding: 10px;
+    color: #fff;
+    font-size: 18px; float: left; width: 35%; text-align: center;
+}

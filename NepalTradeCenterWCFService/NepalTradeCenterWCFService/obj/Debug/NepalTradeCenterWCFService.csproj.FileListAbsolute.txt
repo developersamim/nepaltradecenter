@@ -1,0 +1,10 @@
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\bin\NepalTradeCenterWCFService.dll.config
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\bin\NepalTradeCenterWCFService.dll
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\bin\NepalTradeCenterWCFService.pdb
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\bin\EntityFramework.dll
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\bin\EntityFramework.SqlServer.dll
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\bin\EntityFramework.xml
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\bin\EntityFramework.SqlServer.xml
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\obj\Debug\NepalTradeCenterWCFService.csprojResolveAssemblyReference.cache
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\obj\Debug\NepalTradeCenterWCFService.dll
+E:\microsoft\web\NepalTradeCenterWCFService\NepalTradeCenterWCFService\obj\Debug\NepalTradeCenterWCFService.pdb
