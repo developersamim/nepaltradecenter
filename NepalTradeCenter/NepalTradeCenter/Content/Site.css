@@ -1,7 +1,7 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
-    background: url('images/pattern8.png');
+    /*background: url('images/pattern8.png');*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -47,7 +47,10 @@ textarea {
     }
 
 .topheader {
-    background: #fff;
+    background: #222222;
+}
+.topheader h1{
+
 }
 .topheader img{
     padding: 10px;
@@ -91,7 +94,7 @@ section#mainContent div.myProduct a span{
 section#bestSeller h2{
     margin: 40px auto;
     max-width: 1170px;
-    padding-left: 30px;
+    padding-left: 15px;
 }
 section#bestSeller div.myProduct {
     width: 80%;
@@ -109,8 +112,8 @@ div.productBottom {
 }
 
 div.productBottom a.addToCart {
-        background: #05253a;
-    font-size: 18px;
+    background: #222222;
+    font-size: 14px;
     color: #fff;
     padding: 10px;
     width: 65%;
@@ -118,8 +121,101 @@ div.productBottom a.addToCart {
     text-align: center;
 }
 div.productBottom span.productPrice{
-        background: #35de28;
+    background: #111111;
     padding: 10px;
     color: #fff;
-    font-size: 18px; float: left; width: 35%; text-align: center;
+    font-size: 14px; float: left; width: 35%; text-align: center;
 }
+
+
+
+/* start common */
+h2{
+    font-weight: 100;
+    font-stretch: ultra-condensed;
+    letter-spacing: 2px;
+    font-size: 24px;
+}
+/* end common */
+
+
+/* start header*/
+header{
+    background: #222222;
+}
+header h1{
+    margin: 0;
+    text-align: center;
+    color: #eee;
+    font-stretch: ultra-condensed;
+    font-size: 44px;
+    line-height: 110px;
+}
+/* end header */
+
+/* start nav */
+nav{
+    background: #111;
+    text-align: center;
+    overflow: hidden;
+}
+nav ul{
+    text-align: center;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 72%;
+}
+nav ul li{
+    float: left;
+    padding: 5px 50px;
+}
+nav ul li a{
+    color: #ddd;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav ul li:hover a{
+    text-decoration: none;
+    color: #fff;
+}
+/* end nav */
+
+/* start aside*/
+aside{
+    background: #f7f7f7;
+}
+aside h2{
+    font-weight: 100;
+    font-stretch: ultra-condensed;
+    letter-spacing: 2px;
+    font-size: 24px;
+}
+aside ul {
+    padding: 0;
+    list-style: none;
+}
+aside ul li{
+    
+}
+aside ul li a{
+    padding: 5px;
+    color: #555;
+    display: block;
+}
+
+aside ul li:hover a{
+    text-decoration: none;
+    color: #000;
+    background: #fff;
+}
+/* end aside */
+
+/* start article */
+section{
+    padding-left: 0 !important;
+}
+/* end article */

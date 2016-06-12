@@ -31,6 +31,18 @@
   <wsdl:message name="IProductService_getProductById_OutputMessage">
     <wsdl:part name="parameters" element="tns:getProductByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_updateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_updateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getLastNProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:getLastNProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getLastNProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getLastNProductResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/DoWork" message="tns:IProductService_DoWork_InputMessage" />
@@ -47,6 +59,14 @@
     <wsdl:operation name="getProductById">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/getProductById" message="tns:IProductService_getProductById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/getProductByIdResponse" message="tns:IProductService_getProductById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/updateProduct" message="tns:IProductService_updateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/updateProductResponse" message="tns:IProductService_updateProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getLastNProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/getLastNProduct" message="tns:IProductService_getLastNProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/getLastNProductResponse" message="tns:IProductService_getLastNProduct_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
@@ -80,6 +100,24 @@
     </wsdl:operation>
     <wsdl:operation name="getProductById">
       <soap:operation soapAction="http://tempuri.org/IProductService/getProductById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProduct">
+      <soap:operation soapAction="http://tempuri.org/IProductService/updateProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastNProduct">
+      <soap:operation soapAction="http://tempuri.org/IProductService/getLastNProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

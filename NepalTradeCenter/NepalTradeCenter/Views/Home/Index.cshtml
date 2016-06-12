@@ -6,47 +6,49 @@
         <section id="mainContent">
 
             <div class="container">
-                <h2>New Arrivals on NTC</h2>
+                <h2>New Arrivals</h2>
                 <div class="row">
 
                     <div class="col-md-12">
+                        @{
+                            if (ViewBag.productList.Length == 0)
+                            {
+                                <h3>No Product found...</h3>
+                            }
+                            else
+                            {
+                                int count = 0;
+                                foreach (var element in ViewBag.productList)
+                                {
+                                    count++;
+                                    if (count <= 3)
+                                    {
+                                        <div class="col-md-4">
+                                            <div class="myProduct">
+                                                <a href="#">
+                                                    @if (@element.imageAddress != null)
+                                                    {
+                                                        <img src="@Url.Content(element.imageAddress)" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="@Url.Content(ViewBag.defaultImageAddress)" />
+                                                    }
 
-                        <div class="col-md-4">
-                            <div class="myProduct">
-                                <a href="#">
-                                    <img src="~/Content/images/pic1.jpg"/>
+                                                </a>
+                                                <div class="productBottom">
+                                                    <span class="productPrice">Rs. @Convert.ToInt32(element.sellingPrice)</span>
+                                                    <a class="addToCart" href="#">Add to Cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
 
-                                </a>
-                                <div class="productBottom">
-                                    <span class="productPrice">Rs. @ViewBag.myProduct.sellingPrice</span>
-                                    <a class="addToCart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="myProduct">
-                                <a href="#">
-                                    <img src="~/Content/images/pic2.jpg" />
+                                }
+                            }
+                        }
 
-                                </a>
-                                <div class="productBottom">
-                                    <span class="productPrice">Rs. 860</span>
-                                    <a class="addToCart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="myProduct">
-                                <a href="#">
-                                    <img src="~/Content/images/pic3.jpg" />
-
-                                </a>
-                                <div class="productBottom">
-                                    <span class="productPrice">Rs. 860</span>
-                                    <a class="addToCart" href="#">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

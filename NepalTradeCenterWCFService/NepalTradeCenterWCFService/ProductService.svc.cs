@@ -14,10 +14,10 @@ namespace NepalTradeCenterWCFService
         public void DoWork()
         {
         }
-        public bool insertProduct()
+        public int insertProduct(Product product)
         {
             ProductOperation productOperation = new ProductOperation();
-            return productOperation.insertProduct();
+            return productOperation.insertProduct(product);
         }
         public List<Product> getAllProduct()
         {
@@ -28,6 +28,18 @@ namespace NepalTradeCenterWCFService
         {
             ProductOperation productOperation = new ProductOperation();
             return productOperation.getProductById(productId);
+        }
+
+        public int updateProduct(int productId, string imageAddress)
+        {
+            ProductOperation productOperation = new ProductOperation();
+            return productOperation.updateProduct(productId, imageAddress);
+        }
+
+        public List<Product> getLastNProduct()
+        {
+            ProductOperation productOperation = new ProductOperation();
+            return productOperation.getLastNProduct();
         }
     }
 }

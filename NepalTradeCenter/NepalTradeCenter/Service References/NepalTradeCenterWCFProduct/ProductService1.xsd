@@ -13,13 +13,15 @@
   </xs:element>
   <xs:element name="insertProduct">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/NepalTradeCenterWCFService" minOccurs="0" name="product" nillable="true" type="q1:Product" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="insertProductResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="insertProductResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="insertProductResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -31,7 +33,7 @@
   <xs:element name="getAllProductResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/NepalTradeCenterWCFService" minOccurs="0" name="getAllProductResult" nillable="true" type="q1:ArrayOfProduct" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NepalTradeCenterWCFService" minOccurs="0" name="getAllProductResult" nillable="true" type="q2:ArrayOfProduct" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -45,7 +47,34 @@
   <xs:element name="getProductByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NepalTradeCenterWCFService" minOccurs="0" name="getProductByIdResult" nillable="true" type="q2:Product" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/NepalTradeCenterWCFService" minOccurs="0" name="getProductByIdResult" nillable="true" type="q3:Product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+        <xs:element minOccurs="0" name="imageAddress" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="updateProductResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLastNProduct">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLastNProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/NepalTradeCenterWCFService" minOccurs="0" name="getLastNProductResult" nillable="true" type="q4:ArrayOfProduct" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

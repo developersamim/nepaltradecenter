@@ -229,10 +229,10 @@ namespace NepalTradeCenter.NepalTradeCenterWCFProduct {
         System.Threading.Tasks.Task DoWorkAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/insertProduct", ReplyAction="http://tempuri.org/IProductService/insertProductResponse")]
-        bool insertProduct();
+        int insertProduct(NepalTradeCenter.NepalTradeCenterWCFProduct.Product product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/insertProduct", ReplyAction="http://tempuri.org/IProductService/insertProductResponse")]
-        System.Threading.Tasks.Task<bool> insertProductAsync();
+        System.Threading.Tasks.Task<int> insertProductAsync(NepalTradeCenter.NepalTradeCenterWCFProduct.Product product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getAllProduct", ReplyAction="http://tempuri.org/IProductService/getAllProductResponse")]
         NepalTradeCenter.NepalTradeCenterWCFProduct.Product[] getAllProduct();
@@ -245,6 +245,18 @@ namespace NepalTradeCenter.NepalTradeCenterWCFProduct {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getProductById", ReplyAction="http://tempuri.org/IProductService/getProductByIdResponse")]
         System.Threading.Tasks.Task<NepalTradeCenter.NepalTradeCenterWCFProduct.Product> getProductByIdAsync(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/updateProduct", ReplyAction="http://tempuri.org/IProductService/updateProductResponse")]
+        int updateProduct(int productId, string imageAddress);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/updateProduct", ReplyAction="http://tempuri.org/IProductService/updateProductResponse")]
+        System.Threading.Tasks.Task<int> updateProductAsync(int productId, string imageAddress);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getLastNProduct", ReplyAction="http://tempuri.org/IProductService/getLastNProductResponse")]
+        NepalTradeCenter.NepalTradeCenterWCFProduct.Product[] getLastNProduct();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getLastNProduct", ReplyAction="http://tempuri.org/IProductService/getLastNProductResponse")]
+        System.Threading.Tasks.Task<NepalTradeCenter.NepalTradeCenterWCFProduct.Product[]> getLastNProductAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -282,12 +294,12 @@ namespace NepalTradeCenter.NepalTradeCenterWCFProduct {
             return base.Channel.DoWorkAsync();
         }
         
-        public bool insertProduct() {
-            return base.Channel.insertProduct();
+        public int insertProduct(NepalTradeCenter.NepalTradeCenterWCFProduct.Product product) {
+            return base.Channel.insertProduct(product);
         }
         
-        public System.Threading.Tasks.Task<bool> insertProductAsync() {
-            return base.Channel.insertProductAsync();
+        public System.Threading.Tasks.Task<int> insertProductAsync(NepalTradeCenter.NepalTradeCenterWCFProduct.Product product) {
+            return base.Channel.insertProductAsync(product);
         }
         
         public NepalTradeCenter.NepalTradeCenterWCFProduct.Product[] getAllProduct() {
@@ -304,6 +316,22 @@ namespace NepalTradeCenter.NepalTradeCenterWCFProduct {
         
         public System.Threading.Tasks.Task<NepalTradeCenter.NepalTradeCenterWCFProduct.Product> getProductByIdAsync(int productId) {
             return base.Channel.getProductByIdAsync(productId);
+        }
+        
+        public int updateProduct(int productId, string imageAddress) {
+            return base.Channel.updateProduct(productId, imageAddress);
+        }
+        
+        public System.Threading.Tasks.Task<int> updateProductAsync(int productId, string imageAddress) {
+            return base.Channel.updateProductAsync(productId, imageAddress);
+        }
+        
+        public NepalTradeCenter.NepalTradeCenterWCFProduct.Product[] getLastNProduct() {
+            return base.Channel.getLastNProduct();
+        }
+        
+        public System.Threading.Tasks.Task<NepalTradeCenter.NepalTradeCenterWCFProduct.Product[]> getLastNProductAsync() {
+            return base.Channel.getLastNProductAsync();
         }
     }
 }

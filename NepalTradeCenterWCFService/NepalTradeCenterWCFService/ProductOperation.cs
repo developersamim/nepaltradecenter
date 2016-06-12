@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace NepalTradeCenterWCFService
 {
@@ -36,28 +37,37 @@ namespace NepalTradeCenterWCFService
             }
         }
 
-        public bool insertProduct()
+        public int insertProduct(Product product)
         {
             using (myContext)
             {
-                Product product = new Product();
-                product.productCode = "C123";
-                product.name = "Car";
-                product.quantity = 10;
-                product.cost = 10000;
-                product.sellingPrice = 14000;
-                product.productCreated = DateCreated;
-                product.categoryId = 1;
-                product.status = 1;
-                product.active = 1;
-                product.imageAddress = "this is where am I ?";
-
-
                 myContext.Products.Add(product);
                 myContext.SaveChanges();
-                return true;
-            }
-            
+                return product.productId;
+            }            
         }
+
+        public int updateProduct(int productId, string imageAddress)
+        {
+            Product myProduct = getProductById(productId);
+            myProduct.imageAddress = imageAddress;
+            using (var context = new MyContext())
+            {
+                // the next step implicitly attaches the entity
+                context.Entry(myProduct).State = EntityState.Modified;
+
+                return context.SaveChanges();
+            }
+        }
+
+        public List<Product> getLastNProduct()
+        {
+            using (myContext)
+            {
+                return myContext.Products.SqlQuery("SELECT TOP 3 * FROM Product ORDER BY productId DESC").ToList();
+            }
+        }
+
+        
     }
 }

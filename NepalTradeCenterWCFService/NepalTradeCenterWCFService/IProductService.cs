@@ -15,12 +15,18 @@ namespace NepalTradeCenterWCFService
         void DoWork();
 
         [OperationContract]
-        bool insertProduct();
+        int insertProduct(Product product);
 
         [OperationContract]
         List<Product> getAllProduct();
 
         [OperationContract]
         Product getProductById(int productId);
+
+        [OperationContract]
+        int updateProduct(int productId, string imageAddress);
+
+        [OperationContract]
+        List<Product> getLastNProduct();
     }
 }

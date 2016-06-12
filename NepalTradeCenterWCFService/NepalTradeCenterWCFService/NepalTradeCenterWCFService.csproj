@@ -70,11 +70,17 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CategoryService.svc" />
     <Content Include="ProductService.svc" />
-    <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
+    <Compile Include="CategoryOperation.cs" />
+    <Compile Include="CategoryService.svc.cs">
+      <DependentUpon>CategoryService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ICategoryService.cs" />
     <Compile Include="IProductService.cs" />
     <Compile Include="MyContext.cs" />
     <Compile Include="Product.cs" />
@@ -82,10 +88,6 @@
     <Compile Include="ProductService.svc.cs">
       <DependentUpon>ProductService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
-    </Compile>
-    <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

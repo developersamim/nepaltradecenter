@@ -8,226 +8,211 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     <!-- start slider -->
-    <link href="~/Content/slider.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/CustomerUITemplate.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="~/Scripts/easing.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.eislideshow.js"></script>
-    <script type="text/javascript">
-            $(function() {
-                $('#ei-slider').eislideshow({
-					animation			: 'center',
-					autoplay			: true,
-					slideshow_interval	: 3000,
-					titlesFactor		: 0
+    <style>
+
+h1 {
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+}
+
+#slider {
+  position: relative;
+  overflow: hidden;
+  /*margin: 20px auto 0 auto;*/
+  /*border-radius: 4px;*/
+}
+
+#slider ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 200px;
+  list-style: none;
+  margin: 0 !important;
+}
+
+#slider ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  /*width: 500px;*/
+  width: 100%;
+  height: 300px;
+  background: #ccc;
+  text-align: center;
+  line-height: 300px;
+}
+
+#slider ul li img{
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+
+a.control_prev, a.control_next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+a.control_prev:hover, a.control_next:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+
+a.control_prev {
+  border-radius: 0 2px 2px 0;
+}
+
+a.control_next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+.slider_option {
+  position: relative;
+  margin: 10px auto;
+  width: 160px;
+  font-size: 18px;
+}
+
+    </style>
+
+    <script>
+        jQuery(document).ready(function ($) {
+
+            //$('#checkbox').change(function () {
+                setInterval(function () {
+                    moveRight();
+                }, 3000);
+            //});
+
+            var slideCount = $('#slider ul li').length;
+            var slideWidth = $('#slider ul li').width();
+            var slideHeight = $('#slider ul li').height();
+            //var sliderUlWidth = slideCount * slideWidth;
+            var sliderUlWidth = '100%';
+
+            //$('#slider').css({ width: slideWidth, height: slideHeight });
+            $('#slider').css({ width: '100%', height: slideHeight });
+
+            $('#slider ul').css({ width: sliderUlWidth, marginLeft: -slideWidth });
+
+            $('#slider ul li:last-child').prependTo('#slider ul');
+
+            function moveLeft() {
+                $('#slider ul').animate({
+                    left: +slideWidth
+                }, 200, function () {
+                    $('#slider ul li:last-child').prependTo('#slider ul');
+                    $('#slider ul').css('left', '');
                 });
+            };
+
+            function moveRight() {
+                $('#slider ul').animate({
+                    left: -slideWidth
+                }, 200, function () {
+                    $('#slider ul li:first-child').appendTo('#slider ul');
+                    $('#slider ul').css('left', '');
+                });
+            };
+
+            $('a.control_prev').click(function () {
+                moveLeft();
             });
+
+            $('a.control_next').click(function () {
+                moveRight();
+            });
+
+        });
+
     </script>
     <!-- end slider -->
-
+    <!-- start form validator -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+    <!-- end form validator -->
+    
 </head>
 <body>
-    <div class="container topheaderwrapper">
-        <div class="topheader">
-            <img src="~/Content/images/logoHeight150.png" height="150"/>
-        </div>
-        <div class="navbar-collapse collapse topnav">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "active" })</li>
-                <li>@Html.ActionLink("Categories", "Index", "Home")</li>
-                <li>@Html.ActionLink("Products", "Index", "Home")</li>
-                <li>@Html.ActionLink("Sales", "Index", "Home")</li>
-                <li>@Html.ActionLink("Girls", "Index", "Home")</li>
-                <li>@Html.ActionLink("Women", "Index", "Home")</li>
-                <li>@Html.ActionLink("Login", "Index", "Home")</li>
-                <li>@Html.ActionLink("Register", "Index", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Index", "Home")</li>
-            </ul>
-        </div>
+    <header>
+        <h1>Nepal Trade Center</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("New Arrivals", "Index", "Home")</li>
+            <li>@Html.ActionLink("Shop", "Index", "Home")</li>
+            <li>@Html.ActionLink("Contact Us", "Index", "Home")</li>
+            <li>@Html.ActionLink("Join", "Index", "Home")</li>
+        </ul>
         
-    </div>
-    <div class="container mystripe">
-
-    </div>
-    
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img src="~/Content/images/logo.png"/>
-                @Html.ActionLink("Nepal Trade Center", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse topnav">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Login", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Register", "Index", "Home")</li>
+    </nav>  
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-2">
+                <h2>Categories</h2>
+                <ul>
+                    @{
+                        foreach (var element in ViewBag.categoryList)
+                        {
+                            <li>@Html.ActionLink((string)element.name , "categoryBasedProduct", "Home", new { categoryId = element.categoryId }, null)</li>
+                        }
+                    }
+                    @*<li>@Html.ActionLink("Pumps", "Index", "Category", new { categoryId = 3}, null)</li>
+                    <li>@Html.ActionLink("Platforms", "Index", "Category")</li>
+                    <li>@Html.ActionLink("Sandals", "Index", "Category")</li>
+                    <li>@Html.ActionLink("Sneakers", "Index", "Category")</li>
+                    <li>@Html.ActionLink("Wedges", "Index", "Category")</li>
+                    <li>@Html.ActionLink("Flats", "Index", "Category")</li>
+                    <li>@Html.ActionLink("Ankle Boots", "Index", "Category")</li>*@
                 </ul>
-            </div>
-        </div>
-    </div>*@
+            </aside>
+            <section class="col-md-10">
+                <!-- start slider -->
+                <div id="slider">
+                    <a href="#" class="control_next">>></a>
+                    <a href="#" class="control_prev"><</a>
+                    <ul>
+                        <li><img src="~/Content/images/slider-image1.jpg"/></li>
+                        <li><img src="~/Content/images/slider-image2.jpg" /></li>
+                    </ul>
+                </div>
+                <!-- end slider -->
+                @RenderBody()
 
-    <!-- start slider -->
-    <div class="slider">
-        <!---start-image-slider---->
-        <div class="image-slider">
-            <div class="wrapper">
-                <div id="ei-slider" class="ei-slider">
-                    <ul class="ei-slider-large">
-                        <li>
-                            <img src="~/Content/images/slider-image1.jpg" alt="image06" />
-                            <div class="ei-title">
-                                <h3 class="btn">$145.99</h3>
-                                <h2>pink shoes <br>	2013 collections</h2>
-                                <h3 class="active">
-                                    It is a long established fact that a reader<br>
-                                    Lorem Ipsum is that it has a more-or-less
-                                </h3>
-                                <h3>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_1.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_2.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_3.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_4.png" alt=""></a>
-                                </h3>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="~/Content/images/slider-image2.jpg" alt="image01" />
-                            <div class="ei-title">
-                                <h3 class="btn">$145.99</h3>
-                                <h2>pink shoes <br>	2013 collections</h2>
-                                <h3 class="active">
-                                    It is a long established fact that a reader<br>
-                                    Lorem Ipsum is that it has a more-or-less
-                                </h3>
-                                <h3>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_1.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_2.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_3.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_4.png" alt=""></a>
-                                </h3>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="~/Content/images/slider-image3.jpg" alt="image02" />
-                            <div class="ei-title">
-                                <h3 class="btn">$145.99</h3>
-                                <h2>pink shoes <br>	2013 collections</h2>
-                                <h3 class="active">
-                                    It is a long established fact that a reader<br>
-                                    Lorem Ipsum is that it has a more-or-less
-                                </h3>
-                                <h3>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_1.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_2.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_3.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_4.png" alt=""></a>
-                                </h3>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="~/Content/images/slider-image4.jpg" alt="image03" />
-                            <div class="ei-title">
-                                <h3 class="btn">$145.99</h3>
-                                <h2>pink shoes <br>	2013 collections</h2>
-                                <h3 class="active">
-                                    It is a long established fact that a reader<br>
-                                    Lorem Ipsum is that it has a more-or-less
-                                </h3>
-                                <h3>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_1.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_2.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_3.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_4.png" alt=""></a>
-                                </h3>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="~/Content/images/slider-image5.jpg" alt="image04" />
-                            <div class="ei-title">
-                                <h3 class="btn">$145.99</h3>
-                                <h2>pink shoes <br>	2013 collections</h2>
-                                <h3 class="active">
-                                    It is a long established fact that a reader<br>
-                                    Lorem Ipsum is that it has a more-or-less
-                                </h3>
-                                <h3>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_1.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_2.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_3.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_4.png" alt=""></a>
-                                </h3>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="~/Content/images/slider-image6.jpg" alt="image05" />
-                            <div class="ei-title">
-                                <h3 class="btn">$145.99</h3>
-                                <h2>pink shoes <br>	2013 collections</h2>
-                                <h3 class="active">
-                                    It is a long established fact that a reader<br>
-                                    Lorem Ipsum is that it has a more-or-less
-                                </h3>
-                                <h3>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_1.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_2.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_3.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_4.png" alt=""></a>
-                                </h3>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="~/Content/images/slider-image1.jpg" alt="image07" />
-                            <div class="ei-title">
-                                <h3 class="btn">$145.99</h3>
-                                <h2>pink shoes <br>	2013 collections</h2>
-                                <h3 class="active">
-                                    It is a long established fact that a reader<br>
-                                    Lorem Ipsum is that it has a more-or-less
-                                </h3>
-                                <h3>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_1.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_2.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_3.png" alt=""></a>
-                                    <a class="ei_icons" href="details.html"><img src="~/Content/images/icon_4.png" alt=""></a>
-                                </h3>
-                            </div>
-                        </li>
-                    </ul><!-- ei-slider-large -->
-                    <ul class="ei-slider-thumbs">
-                        <li class="ei-slider-element">Current</li>
-                        <li>
-                            <a href="#">
-                                <span class="active">pink shoes</span>
-                                <p>now of $145.99</p>
-                            </a>
-                            <img src="~/Content/images/1.jpg" alt="thumb01" />
-                        </li>
-                        <li class="hide"><a href="#"><span>anns field</span><p>limited edition</p> </a><img src="~/Content/images/2.jpg" alt="thumb01" /></li>
-                        <li class="hide1"><a href="#"><span>prada</span><p>summer is coming</p></a><img src="~/Content/images/3.jpg" alt="thumb02" /></li>
-                        <li class="hide1"><a href="#"><span>casa devi</span><p>all colors available</p> </a><img src="~/Content/images/4.jpg" alt="thumb03" /></li>
-                        <li><a href="#"><span>mellow yellow</span><p>free delivery</p> </a><img src="~/Content/images/1.jpg" alt="thumb04" /></li>
-                        <li><a href="#"><span>anns field</span><p>limited edition</p> </a><img src="~/Content/images/5.jpg" alt="thumb05" /></li>
-                        <li><a href="#"><span>anns field</span><p>limited edition</p> </a><img src="~/Content/images/3.jpg" alt="thumb07" /></li>
-                    </ul><!-- ei-slider-thumbs -->
-                </div><!-- ei-slider -->
-            </div><!-- wrapper -->
+            </section>
         </div>
-        <!---End-image-slider---->
     </div>
-    <!-- end slider -->
+    
+        
+    
+    
 
     
 
-    <div class="container body-content">
+    @*<div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
-    </div>
+    </div>*@
 
     
     @Scripts.Render("~/bundles/bootstrap")
