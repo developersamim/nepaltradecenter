@@ -14,17 +14,29 @@ namespace NepalTradeCenterWebAPI.Controllers
         {
             List<Product> productList = new List<Product>();
             Product product1 = new Product();
-            product1.productId = 1;
+            //product1.productId = 1;
             product1.productCode = "product 1";
 
             Product product2 = new Product();
-            product2.productId = 2;
+            //product2.productId = 2;
             product2.productCode = "product 2";
 
             productList.Add(product1);
             productList.Add(product2);
 
+            // insert product starts here
+            MyContext myContext = new MyContext();
+            productList.ForEach(s => myContext.Products.Add(s));
+            myContext.SaveChanges();
+            // insert product ends here
+
+
             return productList;
         }
+
+        //public void Post([FromBody]string value)
+        //{
+
+        //}
     }
 }
