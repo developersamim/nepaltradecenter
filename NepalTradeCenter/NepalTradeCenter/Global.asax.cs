@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using NepalTradeCenter.NepalTradeCenterServiceReference;
 
 namespace NepalTradeCenter
 {
@@ -12,6 +13,10 @@ namespace NepalTradeCenter
     {
         protected void Application_Start()
         {
+            // start dataInitializer
+            //NepalTradeCenterServiceClient nepalTradeCenterServiceClient = new NepalTradeCenterServiceClient();
+            //nepalTradeCenterServiceClient.RunDataInitializer();
+            // end dataInititalizer
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -1,0 +1,50 @@
+﻿@model NepalTradeCenter.ViewModels.ProductListViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h2>Product List</h2>
+                </div>
+                <div class="col-md-2 col-md-offset-10">
+                    @Html.ActionLink("Add Product", "addProduct", "Product", new { @class = "addProductAction" })
+                </div>
+            </div>
+        </div>        
+
+<table class="stable" border="1">
+    <thead>
+        <tr>
+            <th>Product Code</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Selling Price</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var element in Model.getTemporaryObjectList())
+            {
+                <tr>
+                    <td>@element.product.productCode</td>
+                    <td>@element.product.name</td>
+                    <td>@element.product.quantity</td>
+                    <td>@element.product.cost</td>
+                    <td>@element.product.sellingPrice</td>
+                    <td>@element.category.name</td>
+                    <td>
+                        @*<a href="/Product/getProduct?ProductID=@myProduct.ProductID">Quick Look</a>*@
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

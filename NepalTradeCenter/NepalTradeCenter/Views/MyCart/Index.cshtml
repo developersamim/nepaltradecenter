@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Cart</h2>
+
+<table class="stable" border="1">
+    <thead>
+        <tr>
+            <th>ProductID</th>
+            <th>Name</th>
+            <th>Selling Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var myItem in ViewBag.itemList)
+            {
+                <tr>
+                    <td>@myItem.product.productId</td>
+                    <td>@myItem.product.name</td>
+                    <td>@myItem.product.sellingPrice</td>
+                    <td>
+                        @myItem.quantity
+                    @*<select name="quantity">
+                            @{
+                                for (int i = 1; i <= @myItem.quantity; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            }
+                        </select>*@
+                </td>
+
+                <td>
+                    <a href="/MyCart/deleteItem?itemId=@myItem.itemId">Delete</a>
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">Total Price</td>
+            <td>@ViewBag.totalPrice</td>
+        </tr>
+    </tfoot>
+</table>
+

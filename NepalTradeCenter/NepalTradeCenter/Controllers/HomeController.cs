@@ -3,33 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using NepalTradeCenter.NepalTradeCenterWCFProduct;
-using NepalTradeCenter.NepalTradeCenterWCFCategory;
+using NepalTradeCenter.NepalTradeCenterServiceReference;
 using System.IO;
+using NepalTradeCenter.ViewModels;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace NepalTradeCenter.Controllers
 {
     public class HomeController : Controller
     {
-        ProductServiceClient productServiceClient = new ProductServiceClient();
-        CategoryServiceClient categoryServiceClient = new CategoryServiceClient();
+        NepalTradeCenterServiceClient nepalTradeCenterServiceClient = new NepalTradeCenterServiceClient();
         const string productUploadAddress = "~/Content/upload/product/";
         //const string productDatabaseAddress = "Content/upload/product/";
         const string defaultImageAddress = "~/Content/upload/product/default.jpg";
 
         public ActionResult Index()
         {
-            ViewBag.productList = productServiceClient.getLastNProduct();
             ViewBag.defaultImageAddress = defaultImageAddress;
 
-            ViewBag.categoryList = categoryServiceClient.getAllCategory();
+            HomeViewModel homeViewModel = new HomeViewModel();
+            homeViewModel.setCategoryList();
+            homeViewModel.setProductList();
 
-            return View();
+            return View(homeViewModel);
+        }
+
+        public ActionResult categoryBasedProduct(int categoryId)
+        {
+            System.Diagnostics.Debug.WriteLine("category Id: " + categoryId);
+
+            //ViewBag.productList = nepalTradeCenterServiceClient.getProductListByCategoryId(categoryId);
+            ViewBag.defaultImageAddress = defaultImageAddress;
+
+            //ViewBag.categoryList = nepalTradeCenterServiceClient.getAllCategory();
+
+            CategoryBasedProductViewModel categoryBasedProductViewModel = new CategoryBasedProductViewModel();
+            categoryBasedProductViewModel.setProductList(categoryId);
+            categoryBasedProductViewModel.setCategoryList();
+
+            return View(categoryBasedProductViewModel);
         }
 
         public ActionResult addCategory()
         {
-            ViewBag.categoryList = categoryServiceClient.getAllCategory();
+            ViewBag.categoryList = nepalTradeCenterServiceClient.getAllCategory();
             return View();
         }
 
@@ -40,7 +57,7 @@ namespace NepalTradeCenter.Controllers
             string name;
             int selectParent;
             int parent;
-            NepalTradeCenterWCFCategory.Category category = new NepalTradeCenterWCFCategory.Category();
+            NepalTradeCenterServiceReference.Category category = new NepalTradeCenterServiceReference.Category();
 
             name = Request.Form["name"];
             selectParent = Convert.ToInt32(Request.Form["selectParent"]);
@@ -56,15 +73,15 @@ namespace NepalTradeCenter.Controllers
             category.name = name;
             category.created = DateCreated;
 
-            categoryServiceClient.insertCategory(category);
+            nepalTradeCenterServiceClient.insertCategory(category);
 
-            ViewBag.categoryList = categoryServiceClient.getAllCategory();
+            ViewBag.categoryList = nepalTradeCenterServiceClient.getAllCategory();
             return View();
         }
 
         public ActionResult addProduct()
         {
-            ViewBag.categoryList = categoryServiceClient.getAllCategory();
+            ViewBag.categoryList = nepalTradeCenterServiceClient.getAllCategory();
             return View();
         }
 
@@ -88,7 +105,7 @@ namespace NepalTradeCenter.Controllers
                 sellingPrice = Convert.ToDecimal(Request.Form["sellingPrice"]);
                 category = Convert.ToInt32(Request.Form["category"]);
 
-                NepalTradeCenterWCFProduct.Product product = new NepalTradeCenterWCFProduct.Product();
+                NepalTradeCenterServiceReference.Product product = new NepalTradeCenterServiceReference.Product();
                 product.name = name;
                 product.productCode = code;
                 product.quantity = quantity;
@@ -97,7 +114,7 @@ namespace NepalTradeCenter.Controllers
                 product.categoryId = category;
                 product.productCreated = DateCreated;
 
-                int productId = productServiceClient.insertProduct(product);
+                int productId = nepalTradeCenterServiceClient.insertProduct(product);
 
                 System.Diagnostics.Debug.WriteLine("Name: " + name + ", code: " + code + ", quantity: " + quantity + ", cost: " + cost + ", sp: " + sellingPrice);
 
@@ -111,13 +128,12 @@ namespace NepalTradeCenter.Controllers
                         var path = Path.Combine(Server.MapPath(productUploadAddress), productId + extension);
                         string imageAddress = productUploadAddress + productId + extension;
                         //System.Diagnostics.Debug.WriteLine("Path: " + path);
-                        if (productServiceClient.updateProduct(productId, imageAddress) > 0)
+                        if (nepalTradeCenterServiceClient.updateProduct(productId, imageAddress) > 0)
                             file.SaveAs(path);
                     }
                 }
             }
-
-            ViewBag.categoryList = categoryServiceClient.getAllCategory();
+            ViewBag.categoryList = nepalTradeCenterServiceClient.getAllCategory();
             return View();
             
         }
@@ -142,16 +158,24 @@ namespace NepalTradeCenter.Controllers
             return View();
         }
 
-        public ActionResult categoryBasedProduct(int categoryId)
+        
+
+    }
+
+    [TestClass]
+    public class HomeControllerTest
+    {
+        [TestMethod]
+        public void Index()
         {
-            System.Diagnostics.Debug.WriteLine("category Id: " + categoryId);
-            ViewBag.productList = categoryServiceClient.getProductListByCategoryId(categoryId);
-            ViewBag.defaultImageAddress = defaultImageAddress;
+            // Arrange
+            HomeController controller = new HomeController();
 
-            ViewBag.categoryList = categoryServiceClient.getAllCategory();
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
 
-            return View("categoryBasedProduct");
+            // Assert
+            Assert.IsNotNull(result);
         }
-
     }
 }

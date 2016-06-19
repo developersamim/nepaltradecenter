@@ -1,0 +1,53 @@
+﻿@model NepalTradeCenter.ViewModels.AddCategoryViewModel
+@{
+    ViewBag.Title = "addCategory";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h2>Add Category</h2>
+<form id="addCategoryForm" method="post" action="addCategory">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="" />
+    </div>
+    <div>
+        <label>Select Parent</label>
+        <input type="checkbox" name="selectParent" id="selectParent" value="1" />
+    </div>
+    <div>
+        <label for="parent">Parent</label>
+        <select name="parent" id="parent">
+            <option value="">Select Parent</option>
+            @{
+                if (Model.getCategoryList().Count != 0)
+                {
+                    foreach (var element in Model.getCategoryList())
+                    {
+                        <option value="@element.categoryId">@element.name</option>
+                    }
+
+                }
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add Category" />
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#addCategoryForm").validate({
+            rules: {
+                name: "required"
+            },
+            messages: {
+                name: "Name cannot be empty!"
+            },
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+    });
+</script>
+
