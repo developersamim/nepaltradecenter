@@ -1,4 +1,4 @@
-﻿
+﻿@model NepalTradeCenter.ViewModels.CategoryBasedProductViewModel
 @{
     ViewBag.Title = "categoryBasedProduct";
 }
@@ -13,14 +13,14 @@
 
             <div class="col-md-12">
                 @{
-                    if (ViewBag.productList.Length == 0)
+                    if (Model.getProductList().Count == 0)
                     {
                         <h3>No Product found...</h3>
                     }
                     else
                     {
                         int count = 0;
-                        foreach (var element in ViewBag.productList)
+                        foreach (var element in Model.getProductList())
                         {
                             count++;
                             if (count <= 3)
@@ -30,11 +30,11 @@
                                         <a href="#">
                                             @if (@element.imageAddress != null)
                                             {
-                                                <img src="@Url.Content(element.imageAddress)" />
+                                                <img src="@Url.Content(element.imageAddress)" width="186" height="210"/>
                                             }
                                             else
                                             {
-                                                <img src="@Url.Content(ViewBag.defaultImageAddress)" />
+                                                <img src="@Url.Content(ViewBag.defaultImageAddress)" width="186" height="210"/>
                                             }
 
                                         </a>

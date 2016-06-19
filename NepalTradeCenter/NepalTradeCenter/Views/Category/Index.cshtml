@@ -1,0 +1,42 @@
+﻿@model NepalTradeCenter.ViewModels.CategoryListViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <h2>Category List</h2>
+        </div>
+        <div class="col-md-2 col-md-offset-10">
+            @Html.ActionLink("Add Category", "addCategory", "Category", new { @class = "addProductAction" })
+        </div>
+    </div>
+</div>
+
+<table class="stable" border="1">
+    <thead>
+        <tr>
+            <th>S.N.</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int count = 1;
+            foreach (var element in Model.getCategoryList())
+            {
+                <tr>
+                    <td>@(count++)</td>
+                    <td>@element.name</td>
+                    <td>
+                        @*<a href="/Product/getProduct?ProductID=@myProduct.ProductID">Quick Look</a>*@
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+

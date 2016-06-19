@@ -1,0 +1,90 @@
+﻿@model NepalTradeCenter.ViewModels.AddProductViewModel
+@{
+    ViewBag.Title = "addProduct";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h2>Add Product</h2>
+
+<script>
+
+    $(document).ready(function () {
+        //we're going to run form validation on the #validate-form element
+        $("#addProductForm").validate({
+            //specify the validation rules
+            rules: {
+                name: "required",
+                code: "required",
+                quantity: "required",
+                cost: "required",
+                sellingPrice: "required",
+                category: "required"
+            },
+
+            //specify validation error messages
+            messages: {
+                name: "Name cannot be empty!",
+                code: "Product Code cannot be empty!",
+                quantity: "Quantity cannot be empty!",
+                cost: "Cost cannot be empty!",
+                sellingPrice: "Selling Price cannot be empty!",
+                category: "Category cannot be empty!"
+            },
+
+            submitHandler: function (form) {
+                form.submit();
+            }
+
+        });
+    });
+
+
+
+</script>
+<form id="addProductForm" method="post" action="addProduct" enctype="multipart/form-data">
+    @Html.ValidationSummary(true)
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" value="" maxlength="30" /><br />
+    </div>
+    <div>
+        <label for="code">Code</label>
+        <input type="text" name="code" id="code" value="" maxlength="30" /><br />
+    </div>
+    <div>
+        <label for="quantity">Quantity</label>
+        <input type="text" name="quantity" id="quantity" value="" maxlength="10" /><br />
+    </div>
+    <div>
+        <label for="cost">Cost</label>
+        <input type="text" name="cost" id="cost" value="" maxlength="10" /><br />
+    </div>
+    <div>
+        <label for="sellingPrice">Selling Price</label>
+        <input type="text" name="sellingPrice" id="sellingPrice" value="" maxlength="10" /><br />
+    </div>
+    <div>
+        <label for="category">Category</label>
+        <select name="category" id="category">
+            <option value="">Select Category</option>
+            @{
+                if (Model.getCategoryList().Count != 0)
+                {
+                    foreach (var element in Model.getCategoryList())
+                    {
+                        <option value="@element.categoryId">@element.name</option>
+                    }
+                }
+            }
+        </select><br />
+    </div>
+    <div>
+        <label for="imageAddress">Choose Image</label>
+        <input style="display: inline" type="file" name="imageAddress" id="imageAddress" /><br />
+    </div>
+    <div>
+        <input type="submit" value="Add Product" />
+    </div>
+</form>
+
+

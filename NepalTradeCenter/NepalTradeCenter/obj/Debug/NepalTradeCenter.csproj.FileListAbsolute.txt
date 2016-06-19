@@ -38,3 +38,13 @@ E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\Newtonsoft.Json.xml
 E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\obj\Debug\NepalTradeCenter.csprojResolveAssemblyReference.cache
 E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\obj\Debug\NepalTradeCenter.dll
 E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\obj\Debug\NepalTradeCenter.pdb
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\System.Net.Http.dll
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\System.Net.Http.Extensions.dll
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\System.Net.Http.Formatting.dll
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\System.Net.Http.Primitives.dll
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\System.Net.Http.WebRequest.dll
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\System.Net.Http.xml
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\System.Net.Http.WebRequest.xml
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\Newtonsoft.Json.Schema.dll
+E:\microsoft\web\NepalTradeCenter\NepalTradeCenter\bin\Newtonsoft.Json.Schema.xml
