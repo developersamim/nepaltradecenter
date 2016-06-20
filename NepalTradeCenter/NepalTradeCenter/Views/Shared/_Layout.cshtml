@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model NepalTradeCenter.ViewModels.ViewModelBase
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -158,8 +159,17 @@ a.control_next {
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
             <li>@Html.ActionLink("New Arrivals", "Index", "Home")</li>
             <li>@Html.ActionLink("Shop", "Index", "Home")</li>
-            <li>@Html.ActionLink("Contact Us", "Index", "Home")</li>
-            <li>@Html.ActionLink("Join", "Index", "Home")</li>
+            <li>@Html.ActionLink("My Cart", "Index", "MyCart")</li>
+            <li>
+                @{
+                    if (Session["itemList"] != null)
+                    {
+                        @Html.ActionLink("Proceed to Checkout(" + @Session["quantity"] + ")", "Index", "MyCart")
+                        //<input type="button" class="proceedToCheckout" value="Proceed to Checkout( @Session["quantity"] )"/>
+                    }
+                }
+            </li>
+
         </ul>
         
     </nav>  
@@ -169,7 +179,7 @@ a.control_next {
                 <h2>Categories</h2>
                 <ul>
                     @{
-                        foreach (var element in ViewBag.categoryList)
+                        foreach (var element in Model.getCategoryList())
                         {
                             <li>@Html.ActionLink((string)element.name , "categoryBasedProduct", "Home", new { categoryId = element.categoryId }, null)</li>
                         }

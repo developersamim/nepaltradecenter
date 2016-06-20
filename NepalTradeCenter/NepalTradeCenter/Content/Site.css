@@ -219,3 +219,21 @@ section{
     padding-left: 0 !important;
 }
 /* end article */
+
+
+/* start table */
+table.stable {
+    width: 100%;
+}
+
+
+table.stable th{
+    background-color: #E6E6FA;
+}
+table.stable th, td {
+    padding: 5px !important; text-align:center;
+}
+table.stable tr:nth-child(even) {
+    background-color: #F0F8FF;
+}
+/* end table */

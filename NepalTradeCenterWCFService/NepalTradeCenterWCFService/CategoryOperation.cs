@@ -23,6 +23,14 @@ namespace NepalTradeCenterWCFService
             }
         }
 
+        public Category getCategoryById(int categoryId)
+        {
+            using (myContext)
+            {
+                return myContext.Categories.Find(categoryId);
+            }
+        }
+
         public List<Category> getAllCategory()
         {
             using (myContext)
