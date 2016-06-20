@@ -5,38 +5,65 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using NepalTradeCenterWebAPI.Models;
+using System.Data.Entity.Infrastructure;
+using System.Text;
 
 namespace NepalTradeCenterWebAPI.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/Product")]
     public class ProductController : ApiController
     {
+        public ProductController() { }
+
         public IEnumerable<Product> Get()
         {
-            List<Product> productList = new List<Product>();
-            Product product1 = new Product();
-            //product1.productId = 1;
-            product1.productCode = "product 1";
-
-            Product product2 = new Product();
-            //product2.productId = 2;
-            product2.productCode = "product 2";
-
-            productList.Add(product1);
-            productList.Add(product2);
-
-            // insert product starts here
-            MyContext myContext = new MyContext();
-            productList.ForEach(s => myContext.Products.Add(s));
-            myContext.SaveChanges();
-            // insert product ends here
 
 
-            return productList;
+
+            return null;
         }
 
-        //public void Post([FromBody]string value)
-        //{
+        // GET api/poduct/5
+        public string Get(int id)
+        {
+            return "value";
+        }
 
-        //}
+        // POST api/product
+        public void Post([FromBody]string value)
+        {
+            DummyValues dummyData = new DummyValues();
+            List<Product> productList = dummyData.dummyproduct();
+
+
+            // insert product starts here
+            try
+            {
+                MyContext myContext = new MyContext();
+                productList.ForEach(s => myContext.Products.Add(s));
+                myContext.SaveChanges();
+                //return productList;
+            }
+            catch (DbUpdateException e)
+            {
+                Console.WriteLine(e.ToString());
+               // return null;
+            }
+
+            // insert product ends here
+
+        }
+
+        // PUT api/product/5
+        public void Put(int id, [FromBody]string value)
+        {
+
+        }
+
+        // DELETE api/product/5
+        public void Delete(int id)
+        {
+        }
     }
 }
