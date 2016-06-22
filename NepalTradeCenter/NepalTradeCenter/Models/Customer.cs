@@ -5,7 +5,7 @@ using System.Web;
 
 namespace NepalTradeCenter.Models
 {
-    public class Admin : User
+    public class Customer : User
     {
     }
 }
