@@ -14,8 +14,8 @@ namespace NepalTradeCenter
         protected void Application_Start()
         {
             // start dataInitializer
-            //NepalTradeCenterServiceClient nepalTradeCenterServiceClient = new NepalTradeCenterServiceClient();
-            //nepalTradeCenterServiceClient.RunDataInitializer();
+            //NepalTradeCenterServiceClient nepaltradecenterserviceclient = new NepalTradeCenterServiceClient();
+            //nepaltradecenterserviceclient.RunDataInitializer();
             // end dataInititalizer
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
