@@ -15,5 +15,7 @@ namespace NepalTradeCenterWebAPI.Models
 
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
+
+        public virtual DbSet<Size> Sizes { get; set; }
     }
 }
